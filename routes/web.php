@@ -45,6 +45,6 @@ Route::get('/admission', function () {
 // Admin Routes
 Route::prefix('admin')->group(function () {
     Route::get('/admin', function () {
-        Route::resource('admins', AdminController::class);
+        Route::resource('admins', 'AdminController');
     });
 });
