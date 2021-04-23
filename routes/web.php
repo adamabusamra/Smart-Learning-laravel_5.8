@@ -1,32 +1,21 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 ##
 # Layout Routes --> for testing
 ##
 
-Route::get('/public_layout', function () {
+Route::get('/public', function () {
     return view('layouts.public');
 });
-Route::get('/admin_layout', function () {
-    return view('layouts.admin');
+Route::get('/dashboard', function () {
+    return view('layouts.dashboard');
 });
 
 ##
 # Public Routes
 ##
 Route::get('/', function () {
-    return view('public.home');
+    return view('welcome');
 });
 Route::get('/about', function () {
     return view('public.about');
@@ -38,13 +27,15 @@ Route::get('/admission', function () {
     return view('public.admission');
 });
 
+
+
 ##
 # Dashboard routes
 ##
 
-// Admin Routes
-Route::prefix('admin')->group(function () {
-    Route::get('/admin', function () {
-        Route::resource('admins', 'AdminController');
-    });
+# Admin Routes
+Route::prefix('dashboard')->group(function () {
+    Route::resource('admins', AdminController::class);
 });
+
+Route::auth();

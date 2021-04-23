@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
     <!--begin::Page Vendors Styles(used by this page)-->
+    @yield('page_css')
     <link href="{{asset ('assets/plugins/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet"
       type="text/css" />
     <!--end::Page Vendors Styles-->
@@ -25,7 +26,7 @@
     <link href="{{asset ('assets/css/themes/layout/brand/dark.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset ('assets/css/themes/layout/aside/dark.css')}}" rel="stylesheet" type="text/css" />
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="{{asset ('assets/media/logos/favicon.ico')}}" />
+    <link rel="shortcut icon" href="{{asset ('assets/media/logos/favicon.png')}}" />
   </head>
   <!--end::Head-->
   <!--begin::Body-->
@@ -36,7 +37,7 @@
     <!--begin::Header Mobile-->
     <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
       <!--begin::Logo-->
-      <img alt="Logo" src="assets/media/logos/logo-light.png" />
+      <img alt="Logo" src="{{ asset('assets/media/logos/logo-light.png') }}" />
       <!--end::Logo-->
       <!--begin::Toolbar-->
       <div class="d-flex align-items-center">
@@ -83,7 +84,7 @@
           <div class="brand flex-column-auto" id="kt_brand">
             <!--begin::Logo-->
             <div class="brand-logo">
-              <img alt="Logo" src="assets/media/logos/logo-light.png" width="140" />
+              <img alt="Logo" src="{{asset('assets/media/logos/logo-light.png')}}" width="140" />
             </div>
             <!--end::Logo-->
             <!--begin::Toggle-->
@@ -307,6 +308,43 @@
                           <span class="menu-label">
                             <span class="label label-danger label-inline">new</span>
                           </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="menu-section">
+                  <h4 class="menu-text">Admins</h4>
+                  <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+                </li>
+                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                  <a href="javascript:;" class="menu-link menu-toggle">
+                    <i class="menu-icon flaticon-web"></i>
+                    <span class="menu-text">Admins</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+                  <div class="menu-submenu">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav">
+                      <li class="menu-item menu-item-parent" aria-haspopup="true">
+                        <span class="menu-link">
+                          <span class="menu-text">Applications</span>
+                        </span>
+                      </li>
+                      <li class="menu-item" aria-haspopup="true">
+                        <a href="{{ route('admins.create') }}" class="menu-link">
+                          <i class="menu-bullet menu-bullet-line">
+                            <span></span>
+                          </i>
+                          <span class="menu-text">Create Admin</span>
+                        </a>
+                      </li>
+                      <li class="menu-item" aria-haspopup="true">
+                        <a href="{{ route('admins.index') }}" class="menu-link">
+                          <i class="menu-bullet menu-bullet-line">
+                            <span></span>
+                          </i>
+                          <span class="menu-text">Admins Table</span>
                         </a>
                       </li>
                     </ul>
@@ -1110,31 +1148,7 @@
           <!--begin::Content-->
           <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
             <!--begin::Subheader-->
-            <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
-              <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-                <!--begin::Info-->
-                <div class="d-flex align-items-center flex-wrap mr-1">
-                  <!--begin::Page Heading-->
-                  <div class="d-flex align-items-baseline flex-wrap mr-5">
-                    <!--begin::Page Title-->
-                    <h5 class="text-dark font-weight-bold my-1 mr-5">@yield("section_title")</h5>
-                    <!--end::Page Title-->
-                    <!--begin::Breadcrumb-->
-                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-                      <li class="breadcrumb-item">
-                        <a href="" class="text-muted">@yield("breadcrumb_main")</a>
-                      </li>
-                      <li class="breadcrumb-item">
-                        <a href="" class="text-muted">@yield("breadcrumb_sub")</a>
-                      </li>
-                    </ul>
-                    <!--end::Breadcrumb-->
-                  </div>
-                  <!--end::Page Heading-->
-                </div>
-                <!--end::Info-->
-              </div>
-            </div>
+            @yield('sub_header')
             <!--end::Subheader-->
             <!--begin::Entry-->
             <div class="d-flex flex-column-fluid">
@@ -1506,6 +1520,7 @@
     <script src="{{asset ('assets/plugins/custom/gmaps/gmaps.js')}}"></script>
     <!--end::Page Vendors-->
     <!--begin::Page Scripts(used by this page)-->
+    @yield('page_scripts')
     <script src="{{asset ('assets/js/pages/widgets.js')}}"></script>
     <!--end::Page Scripts-->
   </body>
