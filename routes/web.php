@@ -15,7 +15,7 @@ Route::get('/dashboard', function () {
 # Public Routes
 ##
 Route::get('/', function () {
-    return view('welcome');
+    return view('public.home');
 });
 Route::get('/about', function () {
     return view('public.about');
